@@ -3,9 +3,10 @@ import vueRouter from 'vue-router';
 import createContact from '../components/CreateContact';
 import login from '../components/Login';
 import emplist from '../components/EmpList'
-import Vtable from '../components/Vtable'
-import validations from '../components/Validations'
+import vtable from '../components/Vtable'
+import validations from '../components/VueForms/Validations.vue'
 import Parent from '../components/PropsEmit/Parent'
+import AddInputboxs from '../components/AddInputboxs'
 Vue.use(vueRouter);
 export default new vueRouter({
     mode: 'history',
@@ -28,7 +29,7 @@ export default new vueRouter({
         {
             path: '/vtable',
             name: 'Vtable',
-            component: Vtable
+            component: vtable
         },
         {
             path: '/validations',
@@ -40,7 +41,11 @@ export default new vueRouter({
             name: 'Parent',
             component: Parent
         },
-
+        {
+            path: '/addinputbox',
+            name: 'addinputbox',
+            component: AddInputboxs
+        },
 
 
     ]

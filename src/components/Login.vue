@@ -24,8 +24,10 @@
     </v-container>
     <v-container>
       <v-row align="center">
-        <v-btn depressed color="primary" class="mr-29"> Cancel </v-btn>
-        <v-btn depressed color="error" @click="Submit($event)" > Login </v-btn>
+        <v-btn depressed color="primary" class="magin-right-class"> Cancel </v-btn>
+        <v-btn depressed color="error" class="magin-right-class" @click="Submit($event)" > Login </v-btn>
+         <v-btn depressed color="error" class="magin-right-class"  @click="$router.push('/validations')" > Form Validations Vuelidates </v-btn>
+            <v-btn depressed color="error" class="magin-right-class"  @click="$router.push('/addinputbox')" > Add Input Boxs</v-btn>
       </v-row>
     </v-container>
   </v-form>
@@ -66,8 +68,14 @@ export default {
       //       this.$router.push("/create");
       // }
     },
+    GoToVuelidates(){
+
+    }
   },
 };
 </script>
 <style scoped>
+.magin-right-class{
+  margin-right: 10px;
+}
 </style>

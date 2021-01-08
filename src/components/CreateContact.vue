@@ -1,13 +1,18 @@
 <template>
+<v-form ref="formSubmit">
+
+
   <v-row justify="center">
     <v-col cols="12" sm="10" md="8" lg="6">
-      <v-card ref="formSubmit">
+      <v-card >
         <v-card-text>
           <v-text-field
             v-model="createContact.contactOpportunity.first_name"
             label="First Name"
             placeholder="Enter Name"
             type="text"
+           :rules="Rules.firstName"
+           maxlength="20"
           ></v-text-field>
           <v-text-field
             v-model="createContact.contactOpportunity.middle_name"
@@ -28,6 +33,9 @@
             v-model="createContact.contactOpportunity.mobile_number"
             label="Primary Mobile"
             placeholder="Enter Primary Mobile"
+             maxlength="10"
+            v-bind:rules="Rules.MNValidation"
+            required
           ></v-text-field>
           <v-text-field
             v-model="createContact.contactOpportunity.age"
@@ -71,6 +79,7 @@
             v-model="createContact.contactOpportunity.gender"
             :items="allListOptions.gender"
             label="Gender"
+            
           ></v-select>
           <v-select
             v-model="createContact.contactOpportunity.marital_status"
@@ -106,16 +115,20 @@
               <span>Refresh form</span>
             </v-tooltip>
           </v-slide-x-reverse-transition>
-          <v-btn color="primary" text @click="submitForm()"> Submit </v-btn>
+          <v-btn color="primary" type="submit" text @click.prevent="submitForm()"> Submit </v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
   </v-row>
+  </v-form>
 </template>
 <script>
 var axios = require("axios");
+const { validationMixin, default: Vuelidate } = require('vuelidate')
+const { required, minLength } = require('vuelidate/lib/validators')
 import allListOptions from "./../Uitils/SelectOptions";
 import URL from "./../Uitils/AllUrls";
+import Rules from './../Uitils/Rules'
 export default {
   data() {
     return {
@@ -129,7 +142,7 @@ export default {
           secondary_email: "",
           date_of_birth: null,
           age: null,
-          mobile_number: null,
+          mobile_number: '',
           other_contact_number: null,
           gender: "",
           marital_status: "",
@@ -157,13 +170,15 @@ export default {
       },
       allListOptions: allListOptions,
       formHasErrors: true,
+      Rules:Rules
     };
+  },
+  validations:{
+
   },
   methods: {
     submitForm() {
-      // if(this.$refs.formSubmit.validate()){
-
-    
+      if(this.$refs.formSubmit.validate()){
       const url = URL.getURL("empDetails");
       axios
         .post(url, this.createContact.contactOpportunity)
@@ -175,7 +190,7 @@ export default {
         .catch((error) => {
           alert(error);
         });
-      // }
+      }
     },
     resetForm() {},
     getItems(item) {
