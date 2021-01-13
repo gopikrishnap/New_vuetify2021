@@ -1,7 +1,7 @@
 <template>
   <v-form v-model="valid" ref="loginForm">
     <v-container>
-       <!-- <h1>{{Email}}</h1> -->
+      <!-- <h1>{{Email}}</h1> -->
       <v-row>
         <v-col cols="12" xl="4">
           <v-text-field
@@ -24,10 +24,49 @@
     </v-container>
     <v-container>
       <v-row align="center">
-        <v-btn depressed color="primary" class="magin-right-class"> Cancel </v-btn>
-        <v-btn depressed color="error" class="magin-right-class" @click="Submit($event)" > Login </v-btn>
-         <v-btn depressed color="error" class="magin-right-class"  @click="$router.push('/validations')" > Form Validations Vuelidates </v-btn>
-            <v-btn depressed color="error" class="magin-right-class"  @click="$router.push('/addinputbox')" > Add Input Boxs</v-btn>
+        <v-btn depressed color="primary" class="magin-right-class">
+          Cancel
+        </v-btn>
+        <v-btn
+          depressed
+          color="error"
+          class="magin-right-class"
+          @click="Submit($event)"
+        >
+          Login
+        </v-btn>
+        <v-btn
+          depressed
+          color="error"
+          class="magin-right-class"
+          @click="$router.push('/validations')"
+        >
+          Form Validations Vuelidates
+        </v-btn>
+        <v-btn
+          depressed
+          color="error"
+          class="magin-right-class"
+          @click="$router.push('/addinputbox')"
+        >
+          Add Input Boxs</v-btn
+        >
+        <v-btn
+          depressed
+          color="error"
+          class="magin-right-class"
+          @click="$router.push('/Fileter')"
+        >
+          Fileter</v-btn
+        >
+        <v-btn
+          depressed
+          color="error"
+          class="magin-right-class"
+          @click="$router.push('/menubar')"
+        >
+          menubar</v-btn
+        >
       </v-row>
     </v-container>
   </v-form>
@@ -44,7 +83,7 @@ export default {
     },
     valid: false,
     loginCommonFun: LoginFun,
-    message:"hellow my prop"
+    message: "hellow my prop",
   }),
   methods: {
     Submit() {
@@ -52,11 +91,12 @@ export default {
         alert("You are not connected to internet.", "Internet Issue");
       } else {
         const url = URL.getURL("login");
-        axios.post(url,this.login)
+        axios
+          .post(url, this.login)
           .then((res) => {
-            console.log("Your Token "+res.data.token);
-            alert("Your Token "+res.data.token);
-            this.$router.push("/create");
+            console.log("Your Token " + res.data.token);
+            alert("Your Token " + res.data.token);
+            this.$router.push("/Login");
           })
           .catch((error) => {
             alert(error);
@@ -68,14 +108,12 @@ export default {
       //       this.$router.push("/create");
       // }
     },
-    GoToVuelidates(){
-
-    }
+    GoToVuelidates() {},
   },
 };
 </script>
 <style scoped>
-.magin-right-class{
+.magin-right-class {
   margin-right: 10px;
 }
 </style>

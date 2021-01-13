@@ -1,6 +1,7 @@
 <template>
   <div class="container header-sigup-cusome">
     <form class="form-horizontal" @submit.prevent="Signup">
+      <p>{{ $v }}</p>
       <div class="form-group" :class="{ invalid: $v.UserSigup.email.$error }">
         <label for="email" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-10">
@@ -12,6 +13,9 @@
             @blur="$v.UserSigup.email.$touch()"
             v-model="UserSigup.email"
           />
+          <p class="p-tag" v-if="!$v.UserSigup.email.email">
+            Please enter valid email
+          </p>
           <p class="p-tag" v-if="!$v.UserSigup.email.email">
             Please enter valid email
           </p>
@@ -112,13 +116,15 @@
               class="glyphicon glyphicon-remove"
               @click="remove(k)"
               v-show="k || (!k && inputs.length > 1)"
-            >delete</i>
+              >delete</i
+            >
             <i
               class="glyphicon glyphicon-plus"
               @click="add(k)"
               v-show="k == inputs.length - 1"
-              style="margin-left: 791px;"
-            >add</i>
+              style="margin-left: 791px"
+              >add</i
+            >
           </span>
         </div>
       </div>
@@ -150,7 +156,7 @@
   </div>
 </template>
 <script>
-import appswitch from './../VueForms/Switch'
+import appswitch from "./../VueForms/Switch";
 import {
   required,
   email,

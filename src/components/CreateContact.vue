@@ -79,7 +79,6 @@
             v-model="createContact.contactOpportunity.gender"
             :items="allListOptions.gender"
             label="Gender"
-            
           ></v-select>
           <v-select
             v-model="createContact.contactOpportunity.marital_status"
@@ -124,8 +123,8 @@
 </template>
 <script>
 var axios = require("axios");
-const { validationMixin, default: Vuelidate } = require('vuelidate')
-const { required, minLength } = require('vuelidate/lib/validators')
+// const { validationMixin, default: Vuelidate } = require('vuelidate')
+// const { required, minLength } = require('vuelidate/lib/validators')
 import allListOptions from "./../Uitils/SelectOptions";
 import URL from "./../Uitils/AllUrls";
 import Rules from './../Uitils/Rules'
@@ -144,7 +143,7 @@ export default {
           age: null,
           mobile_number: '',
           other_contact_number: null,
-          gender: "",
+          gender: "Select",
           marital_status: "",
           address_1: "",
           address_2: "",

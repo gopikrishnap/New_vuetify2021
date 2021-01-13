@@ -5,8 +5,11 @@ import login from '../components/Login';
 import emplist from '../components/EmpList'
 import vtable from '../components/Vtable'
 import validations from '../components/VueForms/Validations.vue'
+import Fileter from '../components/VueForms/Fileter.vue'
 import Parent from '../components/PropsEmit/Parent'
 import AddInputboxs from '../components/AddInputboxs'
+
+import menubar from '../components/VueForms/MenuBar'
 Vue.use(vueRouter);
 export default new vueRouter({
     mode: 'history',
@@ -46,6 +49,17 @@ export default new vueRouter({
             name: 'addinputbox',
             component: AddInputboxs
         },
+        {
+            path: '/Fileter',
+            name: 'Fileter',
+            component: Fileter
+        },
+        {
+            path: '/menubar',
+            name: 'menubar',
+            component: menubar
+
+        }
 
 
     ]
