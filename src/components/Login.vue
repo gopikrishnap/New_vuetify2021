@@ -35,7 +35,7 @@
         >
           Login
         </v-btn>
-        <v-btn
+        <!-- <v-btn
           depressed
           color="error"
           class="magin-right-class"
@@ -66,7 +66,7 @@
           @click="$router.push('/menubar')"
         >
           menubar</v-btn
-        >
+        > -->
       </v-row>
     </v-container>
   </v-form>
@@ -96,7 +96,7 @@ export default {
           .then((res) => {
             console.log("Your Token " + res.data.token);
             alert("Your Token " + res.data.token);
-            this.$router.push("/Login");
+            this.$router.push("/menubar");
           })
           .catch((error) => {
             alert(error);

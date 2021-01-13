@@ -184,7 +184,7 @@ export default {
         .then((res) => {
           console.log("EMp deatils---->", res);
           alert("Your emp Id is Emp" + res.data.id);
-          this.$router.push("/emplist");
+          this.$router.push("/menubar/emplist");
         })
         .catch((error) => {
           alert(error);
